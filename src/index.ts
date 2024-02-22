@@ -1,5 +1,5 @@
 const greet = (msg: string): void => {
-    console.log(msg);
-}
+  console.log(msg);
+};
 
-greet('Hello, World!');
+greet("Hello, World!");
