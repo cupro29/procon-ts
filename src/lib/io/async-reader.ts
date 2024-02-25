@@ -11,7 +11,7 @@ export default class AsyncReader extends EventTarget {
 
     this.stream.on("line", (line) => {
       this.buf = line.split(/\s+/).reverse().concat(this.buf);
-      this.dispatchEvent(new CustomEvent("line"));
+      this.dispatchEvent(new Event("line"));
     });
   }
 
