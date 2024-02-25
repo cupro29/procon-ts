@@ -15,7 +15,10 @@ module.exports = {
   parser: "@typescript-eslint/parser",
   rules: {
     "import/extensions": "off",
+    "no-bitwise": "off",
     "no-console": "off",
+    "no-continue": "off",
+    "no-plusplus": "off",
     "no-unused-vars": ["error", { args: "none" }],
   },
   settings: {

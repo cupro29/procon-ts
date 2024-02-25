@@ -34,7 +34,7 @@ export default class BufWriter {
 
   public flush(): void {
     if (this.buf.length === 0) return;
-    console.log(this.buf);
+    console.log(this.buf.trimEnd());
     this.buf = "";
   }
 }

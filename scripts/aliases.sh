@@ -1,0 +1,1 @@
+alias s="ruby ./scripts/submit.rb"
