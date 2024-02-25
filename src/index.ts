@@ -1,5 +1,6 @@
-const greet = (msg: string): void => {
-  console.log(msg);
-};
+import ProconIO from "lib/io";
+import solve from "solve";
 
-greet("Hello, World!");
+const io = new ProconIO();
+solve(io);
+io.flush();
