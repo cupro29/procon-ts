@@ -1,4 +1,4 @@
-type Writable = string | number | bigint;
+export type Writable = string | number | bigint;
 
 export default class BufWriter {
   private buf: string = "";
