@@ -30,4 +30,8 @@ export default class UnionFind {
   public same(u: number, v: number): boolean {
     return this.leader(u) === this.leader(v);
   }
+
+  public size(u: number): number {
+    return -this.d[this.leader(u)];
+  }
 }
