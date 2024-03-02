@@ -6,4 +6,4 @@ if ARGV.size == 2
     FileUtils.rm_r('./test') if Dir.exist?('./test')
     system("oj d #{url}")
 end
-system("npm run build && oj t -c 'node ./a.out.js' && oj s ./a.out.js -l 5009 --yes --wait=0 && rm ./a.out.js");
+system("npm run build && oj t -c 'node ./a.out.js' -S -N && oj s ./a.out.js -l 5009 --yes --wait=0 && rm ./a.out.js");

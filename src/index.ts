@@ -3,12 +3,17 @@ import { AsyncReader, BufReader, BufWriter, Writable } from "lib/io";
 // #region template
 // eslint-disable-next-line
 const main = (
-  solve: (rd: BufReader, wt: BufWriter) => Writable | Writable[] | void,
+  solve: (
+    rd: BufReader,
+    wt: BufWriter,
+  ) => Writable | Writable[] | boolean | void,
 ): void => {
   const rd = new BufReader();
   const wt = new BufWriter();
   const res = solve(rd, wt);
-  if (res !== undefined) {
+  if (typeof res === "boolean") {
+    wt.yn(res);
+  } else if (res !== undefined) {
     wt.write(res);
   }
   wt.flush();
