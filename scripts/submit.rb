@@ -1,6 +1,10 @@
 require 'fileutils'
 
-if ARGV.size == 2
+if ARGV.size == 1
+    url = ARGV[0]
+    FileUtils.rm_r('./test') if Dir.exist?('./test')
+    system("oj d #{url}")
+elsif ARGV.size == 2
     contest, task = ARGV
     url = "https://atcoder.jp/contests/#{contest}/tasks/#{contest}_#{task}"
     FileUtils.rm_r('./test') if Dir.exist?('./test')
