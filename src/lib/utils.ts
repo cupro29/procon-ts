@@ -22,3 +22,15 @@ export const rle = <T>(arr: ArrayLike<T>): [T, number][] => {
   }
   return res;
 };
+
+export function* gridAdjacent(
+  x: number,
+  y: number,
+  H: number,
+  W?: number,
+): Generator<[number, number]> {
+  if (x > 0) yield [x - 1, y];
+  if (x < H - 1) yield [x + 1, y];
+  if (y > 0) yield [x, y - 1];
+  if (y < (W ?? H) - 1) yield [x, y + 1];
+}
