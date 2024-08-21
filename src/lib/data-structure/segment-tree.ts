@@ -9,8 +9,6 @@ export default abstract class SegmentTree<T> {
 
   private size: number;
 
-  private log: number;
-
   private d: T[];
 
   constructor(n: number);
@@ -21,12 +19,10 @@ export default abstract class SegmentTree<T> {
     if (typeof arg === "number") {
       this.n = arg;
       this.size = bitCeil(arg);
-      this.log = Math.ceil(Math.log2(this.size));
       this.d = Array(this.size * 2).fill(this.e());
     } else {
       this.n = arg.length;
       this.size = bitCeil(arg.length);
-      this.log = Math.ceil(Math.log2(this.size));
       this.d = Array(this.size * 2).fill(this.e());
       for (let i = 0; i < arg.length; i++) {
         this.d[this.size + i] = arg[i];
