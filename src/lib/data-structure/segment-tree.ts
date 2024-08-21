@@ -45,6 +45,14 @@ export default abstract class SegmentTree<T> {
     }
   }
 
+  add(p: number, x: T): void {
+    let i = p + this.size;
+    this.d[i] = this.op(this.d[i], x);
+    for (i >>= 1; i > 0; i >>= 1) {
+      this.d[i] = this.op(this.d[i * 2], this.d[i * 2 + 1]);
+    }
+  }
+
   get(p: number): T {
     return this.d[p + this.size];
   }
