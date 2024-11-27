@@ -34,3 +34,30 @@ export function* gridAdjacent(
   if (y > 0) yield [x, y - 1];
   if (y < (W ?? H) - 1) yield [x, y + 1];
 }
+
+export function* range(l: number, r: number): Generator<number> {
+  for (let i = l; i < r; i++) yield i;
+}
+
+export function* permutations<T extends number | bigint | string>(
+  array: ArrayLike<T>,
+): Generator<Array<T>> {
+  let now = Array.from(array).sort((a, b) => (a < b ? -1 : 1));
+  yield [...now];
+  if (now.length <= 1) return;
+  for (;;) {
+    let i = now.length - 1;
+    for (;;) {
+      const ii = i--;
+      if (now[i] < now[ii]) {
+        let j = now.length;
+        for (; now[i] >= now[--j]; );
+        [now[i], now[j]] = [now[j], now[i]];
+        now = [...now.slice(0, ii), ...now.slice(ii).reverse()];
+        yield [...now];
+        break;
+      }
+      if (i === 0) return;
+    }
+  }
+}
