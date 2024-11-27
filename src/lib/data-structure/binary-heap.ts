@@ -34,15 +34,11 @@ export default class BinaryHeap<T> {
       if (
         i * 2 <= this.length &&
         this.compare(this.d[i * 2 - 1], this.d[i - 1]) &&
-        (i * 2 === this.length ||
-          this.compare(this.d[i * 2 - 1], this.d[i * 2]))
+        (i * 2 === this.length || this.compare(this.d[i * 2 - 1], this.d[i * 2]))
       ) {
         this.swap(i - 1, i * 2 - 1);
         i *= 2;
-      } else if (
-        i * 2 + 1 <= this.length &&
-        this.compare(this.d[i * 2], this.d[i - 1])
-      ) {
+      } else if (i * 2 + 1 <= this.length && this.compare(this.d[i * 2], this.d[i - 1])) {
         this.swap(i - 1, i * 2);
         i = i * 2 + 1;
       } else {

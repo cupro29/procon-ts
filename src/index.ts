@@ -2,43 +2,35 @@ import { AsyncReader, BufReader, BufWriter, type Writable } from "lib/io";
 import { permutations, range } from "lib/utils";
 
 // #region template
-const main = (
-	solve: (
-		rd: BufReader,
-		wt: BufWriter,
-	) => Writable | Writable[] | boolean | void,
-): void => {
-	const rd = new BufReader();
-	const wt = new BufWriter();
-	const res = solve(rd, wt);
-	if (typeof res === "boolean") {
-		wt.yn(res);
-	} else if (res !== undefined) {
-		wt.write(res);
-	}
-	wt.flush();
+const main = (solve: (rd: BufReader, wt: BufWriter) => Writable | Writable[] | boolean | undefined): void => {
+  const rd = new BufReader();
+  const wt = new BufWriter();
+  const res = solve(rd, wt);
+  if (typeof res === "boolean") {
+    wt.yn(res);
+  } else if (res !== undefined) {
+    wt.write(res);
+  }
+  wt.flush();
 };
 
 const amain = async (
-	solve: (
-		rd: AsyncReader,
-		wt: BufWriter,
-	) => Promise<Writable | Writable[] | void>,
+  solve: (rd: AsyncReader, wt: BufWriter) => Promise<Writable | Writable[] | undefined>,
 ): Promise<void> => {
-	const rd = new AsyncReader();
-	const wt = new BufWriter();
-	const res = await solve(rd, wt);
-	if (res !== undefined) {
-		wt.write(res);
-	}
-	rd.close();
-	wt.flush();
+  const rd = new AsyncReader();
+  const wt = new BufWriter();
+  const res = await solve(rd, wt);
+  if (res !== undefined) {
+    wt.write(res);
+  }
+  rd.close();
+  wt.flush();
 };
 
 // #endregion
 
 main((rd, wt) => {
-	const s = rd.str;
-	const k = rd.int;
-	return Array.from(permutations(s))[k - 1].join("");
+  const s = rd.str;
+  const k = rd.int;
+  return Array.from(permutations(s))[k - 1].join("");
 });

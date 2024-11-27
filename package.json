@@ -1,21 +1,21 @@
 {
-	"name": "procon-ts",
-	"version": "0.1.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"build": "esbuild src/index.ts --bundle --platform=node --target=node18.16 > ./a.out.js"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"dependencies": {
-		"@types/node": "^20.11.19",
-		"typescript": "^5.3.3"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "1.9.4",
-		"esbuild": "0.20.1"
-	}
+  "name": "procon-ts",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "esbuild src/index.ts --bundle --platform=node --target=node18.16 > ./a.out.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^20.11.19",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "esbuild": "0.20.1"
+  }
 }
