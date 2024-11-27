@@ -1,8 +1,0 @@
-.vscode
-/dist
-/node_modules
-/test
-/package.json
-/package-lock.json
-/tsconfig.json
-/a.out.js

@@ -30,7 +30,6 @@ export default class BinaryHeap<T> {
     const last = this.d.pop()!;
     this.d[0] = last;
     let i = 1;
-    // eslint-disable-next-line no-constant-condition
     while (true) {
       if (
         i * 2 <= this.length &&
