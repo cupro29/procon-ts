@@ -2,7 +2,7 @@ import { AsyncReader, BufReader, BufWriter, type Writable } from "lib/io";
 import { permutations, range } from "lib/utils";
 
 // #region template
-const main = (solve: (rd: BufReader, wt: BufWriter) => Writable | Writable[] | boolean | undefined): void => {
+const main = (solve: (rd: BufReader, wt: BufWriter) => Writable | Writable[] | boolean | void): void => {
   const rd = new BufReader();
   const wt = new BufWriter();
   const res = solve(rd, wt);
@@ -15,7 +15,7 @@ const main = (solve: (rd: BufReader, wt: BufWriter) => Writable | Writable[] | b
 };
 
 const amain = async (
-  solve: (rd: AsyncReader, wt: BufWriter) => Promise<Writable | Writable[] | undefined>,
+  solve: (rd: AsyncReader, wt: BufWriter) => Promise<Writable | Writable[] | void>,
 ): Promise<void> => {
   const rd = new AsyncReader();
   const wt = new BufWriter();
@@ -29,8 +29,4 @@ const amain = async (
 
 // #endregion
 
-main((rd, wt) => {
-  const s = rd.str;
-  const k = rd.int;
-  return Array.from(permutations(s))[k - 1].join("");
-});
+main((rd, wt) => {});
