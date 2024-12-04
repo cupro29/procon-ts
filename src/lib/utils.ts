@@ -54,3 +54,13 @@ export function* permutations<T extends number | bigint | string>(array: ArrayLi
     }
   }
 }
+
+export function popcnt(n: number): number {
+  let res = 0;
+  res = (n & 0x55555555) + ((n >> 1) & 0x55555555);
+  res = (res & 0x33333333) + ((res >> 2) & 0x33333333);
+  res = (res & 0x0f0f0f0f) + ((res >> 4) & 0x0f0f0f0f);
+  res = (res & 0x00ff00ff) + ((res >> 8) & 0x00ff00ff);
+  res = (res & 0x0000ffff) + ((res >> 16) & 0x0000ffff);
+  return res;
+}
