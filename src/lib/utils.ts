@@ -64,3 +64,18 @@ export function popcnt(n: number): number {
   res = (res & 0x0000ffff) + ((res >> 16) & 0x0000ffff);
   return res;
 }
+
+export function* primeNumbers(n: number): Generator<number> {
+  if (n >= 2) yield 2;
+  const sieve = Array((n + 1) >> 1).fill(true);
+  for (let i = 3; i <= n; i += 2) {
+    const j = (i >> 1) - 1;
+    if (sieve[j]) {
+      yield i;
+      for (let k = j + i; k < sieve.length; k += i) {
+        sieve[k] = false;
+      }
+    }
+  }
+  return;
+}
