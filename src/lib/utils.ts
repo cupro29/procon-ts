@@ -30,7 +30,9 @@ export function* gridAdjacent(x: number, y: number, H: number, W?: number): Gene
   if (y < (W ?? H) - 1) yield [x, y + 1];
 }
 
-export function* range(l: number, r: number): Generator<number> {
+export function* range(n: number, m?: number): Generator<number> {
+  const l = m == null ? 0 : n;
+  const r = m ?? n;
   for (let i = l; i < r; i++) yield i;
 }
 

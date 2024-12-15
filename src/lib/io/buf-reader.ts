@@ -51,11 +51,35 @@ export default class BufReader {
       .map(() => this.num) as Tuple<number, C>;
   }
 
+  public num2d<C extends number, D extends number>(n: C, m: D): Tuple<Tuple<number, D>, C> {
+    return Array(n)
+      .fill(null)
+      .map(() => this.nums(m)) as Tuple<Tuple<number, D>, C>;
+  }
+
   public get int(): number {
     return this.num;
   }
 
   public ints = this.nums;
+
+  public int2d = this.num2d;
+
+  public get ind(): number {
+    return this.num - 1;
+  }
+
+  public inds<C extends number>(n: C): Tuple<number, C> {
+    return Array(n)
+      .fill(null)
+      .map(() => this.ind) as Tuple<number, C>;
+  }
+
+  public ind2d<C extends number, D extends number>(n: C, m: D): Tuple<Tuple<number, D>, C> {
+    return Array(n)
+      .fill(null)
+      .map(() => this.inds(m)) as Tuple<Tuple<number, D>, C>;
+  }
 
   public get bint(): bigint {
     return BigInt(this.buf.pop()!);
@@ -65,5 +89,11 @@ export default class BufReader {
     return Array(n)
       .fill(null)
       .map(() => this.bint) as Tuple<bigint, C>;
+  }
+
+  public bint2d<C extends number, D extends number>(n: C, m: D): Tuple<Tuple<bigint, D>, C> {
+    return Array(n)
+      .fill(null)
+      .map(() => this.bints(m)) as Tuple<Tuple<bigint, D>, C>;
   }
 }
