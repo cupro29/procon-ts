@@ -121,3 +121,30 @@ export default abstract class SegmentTree<T> {
     return 0;
   }
 }
+
+export class RangeSumQuerySegmentTree extends SegmentTree<number> {
+  op(l: number, r: number): number {
+    return l + r;
+  }
+  e(): number {
+    return 0;
+  }
+}
+
+export class RangeMaxQuerySegmentTree extends SegmentTree<number> {
+  op(l: number, r: number): number {
+    return Math.max(l, r);
+  }
+  e(): number {
+    return Number.NEGATIVE_INFINITY;
+  }
+}
+
+export class RangeMinQuerySegmentTree extends SegmentTree<number> {
+  op(l: number, r: number): number {
+    return Math.min(l, r);
+  }
+  e(): number {
+    return Number.POSITIVE_INFINITY;
+  }
+}
