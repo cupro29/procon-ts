@@ -81,3 +81,5 @@ export function* primeNumbers(n: number): Generator<number> {
   }
   return;
 }
+
+export const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : a);

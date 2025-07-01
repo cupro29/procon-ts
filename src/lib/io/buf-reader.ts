@@ -27,7 +27,7 @@ type Tuple<T, C extends number> = C extends 0
 export default class BufReader {
   private buf: string[];
 
-  constructor(inputSource = process.stdin.fd) {
+  constructor(inputSource = "/dev/stdin") {
     this.buf = fs.readFileSync(inputSource, "utf8").split(/\s+/).reverse();
   }
 
