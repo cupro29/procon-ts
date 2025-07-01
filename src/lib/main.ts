@@ -2,14 +2,13 @@ import { AsyncReader, BufReader, BufWriter, type Writable } from "./io";
 
 export const main = (solve: (rd: BufReader, wt: BufWriter) => Writable | Writable[] | boolean | void): void => {
   const rd = new BufReader();
-  const wt = new BufWriter();
+  using wt = new BufWriter();
   const res = solve(rd, wt);
   if (typeof res === "boolean") {
     wt.yn(res);
   } else if (res !== undefined) {
     wt.write(res);
   }
-  wt.flush();
 };
 
 export const amain = async (

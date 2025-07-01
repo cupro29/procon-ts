@@ -3,6 +3,10 @@ export type Writable = string | number | bigint;
 export default class BufWriter {
   private buf = "";
 
+  [Symbol.dispose]() {
+    this.flush();
+  }
+
   public write(value: Writable | Writable[], sep = " "): void {
     if (Array.isArray(value)) {
       this.buf = this.buf.concat(value.join(sep));
